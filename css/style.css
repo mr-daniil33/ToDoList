@@ -1,0 +1,57 @@
+@font-face {
+  font-family: "Inter";
+  src:
+    url(../fonts/inter-cyrillic-400-normal.woff2) format("woff2"),
+    url(../fonts/inter-cyrillic-400-normal.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0400-045F;
+}
+
+@font-face {
+  font-family: "Inter";
+  src:
+    url(../fonts/inter-latin-400-normal.woff2) format("woff2"),
+    url(../fonts/inter-latin-400-normal.woff) format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF;
+}
+
+@font-face {
+  font-family: "Inter";
+  src:
+    url(../fonts/inter-cyrillic-700-normal.woff2) format("woff2"),
+    url(../fonts/inter-cyrillic-700-normal.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0400-045F;
+}
+
+@font-face {
+  font-family: "Inter";
+  src:
+    url(../fonts/inter-latin-700-normal.woff2) format("woff2"),
+    url(../fonts/inter-latin-700-normal.woff) format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF;
+}
+
+body {
+  width: 1500px;
+  margin: 0 auto;
+  padding-top: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.header__title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
