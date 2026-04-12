@@ -48,10 +48,31 @@ body {
   padding-top: 10px;
   font-family: "Inter", sans-serif;
   font-weight: 400;
+  background-color: #1a1a1a;
+}
+
+.header {
+  background-color: #2d2d2d;
+  color: white;
+  border-radius: 12px 12px 0 0;
+}
+
+h1 {
+  font-size: 24px;
 }
 
 .header__title {
   display: flex;
   align-items: center;
   gap: 8px;
+}
+
+.header__top {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid white;
 }
