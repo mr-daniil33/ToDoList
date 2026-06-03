@@ -3,24 +3,60 @@ const state = {
     {
       id: "toDo",
       title: "To Do",
-      cards: [],
+      cards: [
+        {
+          id: "card_1712345678901", // уникальный ID через Date.now()
+          title: "Написать этот проект",
+          description:
+            "Вот сейчас пишу его. Сложный он конечно, но будем стараться, чего делать то блин емае.",
+          priority: "high", // 'low' | 'medium' | 'high'
+          tags: ["frontend", "figma", "algoritmes", "events"], // массив строк
+          createdAt: 1712345678901,
+        },
+        {
+          id: "card_1712124678901", // уникальный ID через Date.now()
+          title: "Сходить за кофе",
+          description: "Вкусный сырный латте, ммммм",
+          priority: "medium", // 'low' | 'medium' | 'high'
+          tags: ["coffee", "enjoyment"], // массив строк
+          createdAt: 1712345678901,
+        },
+      ],
     },
     {
       id: "inProgress",
       title: "In Progress",
-      cards: [],
+      cards: [
+        {
+          id: "card_1712345678231", // уникальный ID через Date.now()
+          title: "Написать обработку событий",
+          description: "Пора приступать за event.js",
+          priority: "medium", // 'low' | 'medium' | 'high'
+          tags: ["events", "clicks"], // массив строк
+          createdAt: 1712345678901,
+        },
+      ],
     },
     {
       id: "done",
       title: "Done",
-      cards: [],
+      cards: [
+        {
+          id: "card_1712345672431", // уникальный ID через Date.now()
+          title: "Реализовать перенос мышкой",
+          description: "Drag and drop в деле",
+          priority: "low", // 'low' | 'medium' | 'high'
+          tags: ["drag", "drop", "frontend"], // массив строк
+          createdAt: 1712345678901,
+        },
+      ],
     },
   ],
   filter: {
     priority: null,
     tag: null,
   },
-  theme: "light",
+  theme: "dark",
   modal: {
     isOpen: false,
     cardId: null,
@@ -42,13 +78,17 @@ function saveState() {
 function addCard(columnId, cardData) {
   const now = Date.now();
   const newCard = {
+    tags: [],
+    priority: "low",
+    description: "",
+    ...cardData,
     id: "card_" + now,
     createdAt: now,
-    ...cardData,
   };
   for (let column of state.columns) {
     if (column.id === columnId) {
       column.cards.push(newCard);
+      console.log("добавили карточку");
     }
   }
   saveState();
@@ -78,6 +118,7 @@ function moveCard(cardId, fromColumnId, toColumnId, toIndex) {
   for (let column of state.columns) {
     if (column.id === fromColumnId) {
       movedCard = column.cards.find((card) => card.id === cardId);
+      if (!movedCard) return;
       column.cards = column.cards.filter((card) => card.id !== cardId);
     }
   }

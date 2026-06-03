@@ -6,6 +6,9 @@
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/style.css" />
     <script src="/js/state.js" defer></script>
+    <script src="/js/render.js" defer></script>
+    <script src="/js/events.js" defer></script>
+    <script src="/js/app.js" defer></script>
     <title>ToDo</title>
   </head>
   <body>
@@ -71,44 +74,7 @@
       </div>
     </header>
     <main>
-      <div class="board">
-        <section class="board__column column">
-          <div class="column__header">
-            <div class="column__title">
-              <span class="column__indicator column__indicator--todo"></span>
-              <h2>To Do</h2>
-            </div>
-
-            <span class="column__counter">1</span>
-          </div>
-          <div class="column__tasks"></div>
-          <button class="column__add-task-btn">+ Добавить карточку</button>
-        </section>
-        <section class="board__column column">
-          <div class="column__header">
-            <div class="column__title">
-              <span
-                class="column__indicator column__indicator--inprogress"
-              ></span>
-              <h2>In progress</h2>
-            </div>
-            <span class="column__counter">2</span>
-          </div>
-          <div class="column__tasks"></div>
-          <button class="column__add-task-btn">+ Добавить карточку</button>
-        </section>
-        <section class="board__column column">
-          <div class="column__header">
-            <div class="column__title">
-              <span class="column__indicator column__indicator--done"></span>
-              <h2>Done</h2>
-            </div>
-            <span class="column__counter">3</span>
-          </div>
-          <div class="column__tasks"></div>
-          <button class="column__add-task-btn">+ Добавить карточку</button>
-        </section>
-      </div>
+      <div class="board"></div>
     </main>
   </body>
 </html>

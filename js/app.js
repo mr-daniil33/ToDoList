@@ -1,0 +1,3 @@
+loadState();
+render();
+initEvents();

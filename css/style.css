@@ -50,7 +50,17 @@
   --color-boardBg: #f4f5f7;
 }
 
+[data-theme="light"] {
+  --color-text: #172b4d;
+  --color-accent: rgba(0, 0, 0, 0.5);
+  --color-surface: #ffffff;
+  --color-bg: #f4f5f7;
+  --color-boardBg: #e2e8f0;
+}
+
 body {
+  display: flex;
+  flex-direction: column;
   max-width: 1500px;
   margin: 0 auto;
   padding-top: 10px;
@@ -126,6 +136,27 @@ h1 {
   border-color: rgba(255, 255, 255, 0.4);
 }
 
+.header__tags {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow-x: auto;
+  padding-bottom: 3px;
+}
+
+.header__tag {
+  display: flex;
+  gap: 3px;
+  background-color: #f1f5f9;
+  color: #3b82f6;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.header__tag-remove {
+  font-size: 0.6em;
+}
+
 .header__tags span {
   padding-left: 10px;
   border-left: 1px solid var(--color-accent);
@@ -133,9 +164,10 @@ h1 {
 
 .board {
   display: flex;
+
   gap: 15px;
   padding-top: 15px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
   padding-left: 20px;
   padding-right: 20px;
   background-color: var(--color-boardBg);
@@ -143,12 +175,13 @@ h1 {
 
 .column {
   flex: 1;
+  max-height: calc(100vh - 200px);
+  min-width: 280px;
   padding: 10px;
   display: flex;
   flex-direction: column;
-
   color: var(--color-text);
-  background-color: var(--color-surface);
+  background-color: var(--color-bg);
   border: 1px solid var(--color-accent);
   border-radius: 5px;
 }
@@ -157,13 +190,17 @@ h1 {
   display: flex;
   justify-content: space-between;
   padding-bottom: 10px;
+  border-bottom: 1px solid var(--color-accent);
+}
+
+h2 {
+  font-size: 20px;
 }
 
 .column__title {
   display: flex;
   align-items: center;
   gap: 5px;
-  font-size: 20px;
 }
 
 .column__indicator {
@@ -177,15 +214,16 @@ h1 {
   background-color: green;
 }
 
-.column__indicator--inprogress {
+.column__indicator--inProgress {
   background-color: orange;
 }
 
-.column__indicator--todo {
+.column__indicator--toDo {
   background-color: var(--color-accent);
 }
 
 .column__add-task-btn {
+  margin-top: 5px;
   border: 1px solid var(--color-accent);
   border-radius: 5px;
   padding: 10px 0px;
@@ -207,4 +245,182 @@ h1 {
   width: 30px;
   height: 30px;
   border: 1px solid var(--color-accent);
+}
+
+.column__card {
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--color-accent);
+  background-color: var(--color-surface);
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  gap: 8px;
+}
+
+.card--high {
+  border-left: 4px solid red;
+}
+
+.card--medium {
+  border-left: 4px solid orange;
+}
+
+.card--low {
+  border-left: 4px solid green;
+}
+
+.card__title {
+}
+
+.card__tags {
+  display: flex;
+  gap: 5px;
+  flex-wrap: wrap;
+}
+
+.card__priority {
+  display: flex;
+  justify-content: space-between;
+}
+
+.column__tasks {
+  overflow-y: auto;
+  padding-top: 10px;
+  padding-right: 5px;
+}
+
+.card__deleteBtn {
+  color: var(--color-accent);
+}
+
+.modal__content {
+  width: 400px;
+  max-width: 90vw;
+  background-color: var(--color-surface);
+  color: white;
+  padding: 15px;
+}
+
+.modal__title {
+  display: flex;
+  justify-content: space-between;
+}
+
+dialog {
+  border-radius: 5px;
+  margin: auto;
+}
+
+.modal__closeBtn {
+  color: var(--color-accent);
+  padding: 10px;
+  border: solid 1px var(--color-accent);
+  border-radius: 5px;
+}
+
+.modal__form form {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal__form form label {
+  color: var(--color-accent);
+  margin-bottom: 5px;
+}
+
+.modal__form form input {
+  padding: 5px;
+  background-color: var(--color-surface);
+  border: solid 1px var(--color-accent);
+  border-radius: 5px;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.modal__form form textarea {
+  background-color: var(--color-surface);
+  color: white;
+  max-height: 70px;
+  overflow-y: scrolls;
+  resize: none;
+  border: solid 1px var(--color-accent);
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.modal__form form select {
+  background-color: var(--color-surface);
+  color: white;
+  border: solid 1px var(--color-accent);
+  border-radius: 5px;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+
+.card__badge {
+  display: inline-block;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.card__badge--high {
+  color: #c0392b;
+  background-color: #fce8e8;
+}
+
+.card__badge--medium {
+  color: #b45309;
+  background-color: #fef9c3;
+}
+
+.card__badge--low {
+  color: #16a34a;
+  background-color: #dcfce7;
+}
+
+.card__tag {
+  display: inline-block;
+  padding: 3px;
+  border-radius: 5px;
+}
+
+.card__add-form input {
+  background-color: inherit;
+  border: 1px solid var(--color-accent);
+  border-radius: 5px;
+  padding: 5px;
+  color: white;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.card__buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card__buttons button {
+  border: 1px solid var(--color-accent);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+@media (max-width: 767px) {
+  .board {
+    flex-wrap: wrap;
+  }
+
+  .column {
+    flex-basis: 100%;
+    max-height: none;
+  }
+
+  .column__tasks {
+    overflow-y: visible;
+  }
 }
