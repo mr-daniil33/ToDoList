@@ -187,6 +187,7 @@ function renderFilterPanel() {
 
 function renderTheme() {
   document.documentElement.setAttribute("data-theme", state.theme);
+  saveState();
 }
 
 function renderAddCardForm(columnEl) {

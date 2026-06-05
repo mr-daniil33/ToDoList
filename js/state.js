@@ -88,7 +88,6 @@ function addCard(columnId, cardData) {
   for (let column of state.columns) {
     if (column.id === columnId) {
       column.cards.push(newCard);
-      console.log("добавили карточку");
     }
   }
   saveState();

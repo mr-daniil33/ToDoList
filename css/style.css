@@ -42,7 +42,7 @@
   unicode-range: U+0000-00FF;
 }
 
-:root {
+[data-theme="dark"] {
   --color-text: white;
   --color-accent: rgba(255, 255, 255, 0.7);
   --color-surface: #2d2d2d;
@@ -423,4 +423,7 @@ dialog {
   .column__tasks {
     overflow-y: visible;
   }
+}
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
 }
