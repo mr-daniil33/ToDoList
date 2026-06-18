@@ -57,11 +57,6 @@ const state = {
     tag: null,
   },
   theme: "dark",
-  modal: {
-    isOpen: false,
-    cardId: null,
-    columnId: null,
-  },
 };
 
 function loadState() {
@@ -121,6 +116,7 @@ function moveCard(cardId, fromColumnId, toColumnId, toIndex) {
       column.cards = column.cards.filter((card) => card.id !== cardId);
     }
   }
+
   for (let column of state.columns) {
     if (column.id === toColumnId) {
       column.cards.splice(toIndex, 0, movedCard);

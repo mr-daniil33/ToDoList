@@ -64,6 +64,7 @@ function renderCard(card, columnId) {
   newCard.classList.add("column__card");
   newCard.classList.add("card");
   newCard.classList.add(`card--${card.priority}`);
+  newCard.draggable = true;
   const cardTitle = document.createElement("div");
   const title = document.createElement("h2");
   cardTitle.classList.add("card__title");
@@ -124,6 +125,14 @@ function renderModal(cardId, columnId) {
   const lowOption = document.createElement("option");
   const mediumOption = document.createElement("option");
   const highOption = document.createElement("option");
+  const tagInput = document.createElement("input");
+  const tagLabel = document.createElement("label");
+  const addTagButton = document.createElement("button");
+  tagInput.id = "tagInput";
+  tagLabel.htmlFor = tagInput.id;
+  tagInput.placeholder = "Введите тег";
+  addTagButton.textContent = "Добавить тег";
+  addTagButton.classList.add("modal__add-tag-button");
   lowOption.value = "low";
   mediumOption.value = "medium";
   highOption.value = "high";
@@ -149,6 +158,9 @@ function renderModal(cardId, columnId) {
   form.append(descriptionTextArea);
   form.append(priorityLabel);
   form.append(prioritySelect);
+  form.append(tagLabel);
+  form.append(tagInput);
+  form.append(addTagButton);
   modalForm.classList.add("modal__form");
   modalForm.append(form);
   closeBtn.classList.add("modal__closeBtn");
@@ -160,6 +172,8 @@ function renderModal(cardId, columnId) {
   modalContent.classList.add("modal__content");
   modalContent.append(modalTitle);
   modalContent.append(modalForm);
+  modal.dataset.cardId = cardId;
+  modal.dataset.columnId = columnId;
   modal.append(modalContent);
   body.append(modal);
   modal.showModal();
@@ -175,12 +189,11 @@ function renderFilterPanel() {
   headerTags.innerHTML = "";
   for (let tag of allTags) {
     const headerTag = document.createElement("div");
-    const tagDelete = document.createElement("button");
     headerTag.textContent = tag;
     headerTag.classList.add("header__tag");
-    tagDelete.classList.add("header__tag-remove");
-    tagDelete.textContent = "X";
-    headerTag.append(tagDelete);
+    if (state.filter.tag === headerTag.textContent) {
+      headerTag.classList.add("header__tag--active");
+    }
     headerTags.append(headerTag);
   }
 }
