@@ -31,12 +31,17 @@ function initEvents() {
   board.addEventListener("submit", (event) => {
     event.preventDefault();
     const addCardForm = event.target.closest(".card__add-form");
+    const columnId = event.target.closest(".column")?.id;
     if (addCardForm && addCardForm.title.value) {
       addCard(event.target.closest(".column").id, {
         title: addCardForm.title.value,
       });
       isAddCardFormRendered = false;
       render();
+      document
+        .getElementById(columnId)
+        ?.querySelector(".card:last-child")
+        .classList.add("card--animate");
     }
   });
 

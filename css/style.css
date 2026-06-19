@@ -131,9 +131,14 @@ h1 {
     border-color 0.2s;
 }
 
-.header__priority-btn:hover {
+[data-theme="dark"] .header__priority-btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="light"] .header__priority-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.4);
 }
 
 .header__tags {
@@ -234,9 +239,14 @@ h2 {
     border-color 0.2s;
 }
 
-.column__add-task-btn:hover {
+[data-theme="dark"] .column__add-task-btn:hover {
   background-color: rgba(255, 255, 255, 0.1);
   border-color: rgba(255, 255, 255, 0.4);
+}
+
+[data-theme="light"] .column__add-task-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.4);
 }
 
 .column__counter {
@@ -258,6 +268,31 @@ h2 {
   padding: 10px;
   margin-bottom: 10px;
   gap: 8px;
+  transition: box-shadow 0.2s ease;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+[data-theme="dark"] .card {
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .card:hover {
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="light"] .card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.card--animate {
+  animation: cardAppear 0.3s ease;
 }
 
 .card--high {
@@ -297,7 +332,7 @@ h2 {
   width: 400px;
   max-width: 90vw;
   background-color: var(--color-surface);
-  color: white;
+  color: var(--color-text);
   padding: 15px;
 }
 
@@ -309,6 +344,7 @@ h2 {
 dialog {
   border-radius: 5px;
   margin: auto;
+  animation: modalAppear 0.3s ease;
 }
 
 .modal__closeBtn {
@@ -333,13 +369,13 @@ dialog {
   background-color: var(--color-surface);
   border: solid 1px var(--color-accent);
   border-radius: 5px;
-  color: white;
+  color: var(--color-text);
   margin-bottom: 15px;
 }
 
 .modal__form form textarea {
   background-color: var(--color-surface);
-  color: white;
+  color: var(--color-text);
   max-height: 70px;
   overflow-y: scrolls;
   resize: none;
@@ -351,7 +387,7 @@ dialog {
 
 .modal__form form select {
   background-color: var(--color-surface);
-  color: white;
+  color: var(--color-text);
   border: solid 1px var(--color-accent);
   border-radius: 5px;
   padding: 5px;
@@ -390,7 +426,7 @@ dialog {
   border: 1px solid var(--color-accent);
   border-radius: 5px;
   padding: 5px;
-  color: white;
+  color: var(--color-text);
   width: 100%;
   margin-bottom: 10px;
 }
@@ -453,4 +489,35 @@ dialog::backdrop {
   border: 1px dashed #172b4d;
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.05);
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    scale: 0.95;
+  }
+  to {
+    opacity: 1;
+    scale: 1;
+  }
+}
+
+*,
+*::before,
+*::after {
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease;
 }
