@@ -33,7 +33,7 @@ function renderColumn(column) {
   columnTitle.append(title);
   columnHeader.append(columnTitle);
   columnHeader.append(columnCounter);
-  for (card of column.cards) {
+  for (let card of column.cards) {
     columnTasks.append(renderCard(card, column.id));
   }
   newColumn.append(columnHeader);
@@ -65,6 +65,7 @@ function renderCard(card, columnId) {
   newCard.classList.add("card");
   newCard.classList.add(`card--${card.priority}`);
   newCard.draggable = true;
+  newCard.tabIndex = 0;
   const cardTitle = document.createElement("div");
   const title = document.createElement("h2");
   cardTitle.classList.add("card__title");
@@ -73,7 +74,7 @@ function renderCard(card, columnId) {
   const cardTags = document.createElement("div");
   cardTags.classList.add("card__tags");
   if (card.tags.length) {
-    for (tag of card.tags) {
+    for (let tag of card.tags) {
       const cardTag = document.createElement("span");
       cardTag.classList.add("card__tag");
       cardTag.textContent = tag;
@@ -93,6 +94,7 @@ function renderCard(card, columnId) {
   const deleteBtn = document.createElement("button");
   deleteBtn.classList.add("card__deleteBtn");
   deleteBtn.textContent = "X";
+  deleteBtn.ariaLabel = "Удалить карточку";
   cardPriority.append(deleteBtn);
   newCard.append(cardTitle);
   newCard.append(cardTags);
@@ -186,9 +188,12 @@ function renderFilterPanel() {
       .flatMap((card) => card.tags),
   );
   const headerTags = document.querySelector(".header__tags");
+  const headerSpan = document.createElement("span");
+  headerSpan.textContent = "Тег:";
   headerTags.innerHTML = "";
+  headerTags.append(headerSpan);
   for (let tag of allTags) {
-    const headerTag = document.createElement("div");
+    const headerTag = document.createElement("button");
     headerTag.textContent = tag;
     headerTag.classList.add("header__tag");
     if (state.filter.tag === headerTag.textContent) {

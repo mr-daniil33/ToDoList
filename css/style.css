@@ -63,7 +63,6 @@ body {
   flex-direction: column;
   max-width: 1500px;
   margin: 0 auto;
-  padding-top: 10px;
   font-family: "Inter", sans-serif;
   font-weight: 400;
   background-color: var(--color-bg);
@@ -74,11 +73,14 @@ button {
 }
 
 .header {
+  height: 132px;
+  position: fixed;
   padding-left: 20px;
   padding-right: 20px;
   background-color: var(--color-surface);
   color: var(--color-text);
-  border-radius: 12px 12px 0 0;
+  width: 100%;
+  max-width: 1500px;
 }
 
 h1 {
@@ -143,10 +145,10 @@ h1 {
 
 .header__tags {
   display: flex;
-  align-items: center;
   gap: 5px;
   overflow-x: auto;
-  padding-bottom: 3px;
+  padding: 3px;
+  align-items: center;
 }
 
 .header__tag {
@@ -170,7 +172,7 @@ h1 {
 
 .board {
   display: flex;
-
+  margin-top: 132px;
   gap: 15px;
   padding-top: 15px;
   padding-bottom: 20px;
@@ -267,6 +269,7 @@ h2 {
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 10px;
+  margin-left: 5px;
   gap: 8px;
   transition: box-shadow 0.2s ease;
 }
@@ -326,6 +329,12 @@ h2 {
 
 .card__deleteBtn {
   color: var(--color-accent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.card:hover .card__deleteBtn {
+  opacity: 1;
 }
 
 .modal__content {
@@ -377,7 +386,7 @@ dialog {
   background-color: var(--color-surface);
   color: var(--color-text);
   max-height: 70px;
-  overflow-y: scrolls;
+  overflow-y: scroll;
   resize: none;
   border: solid 1px var(--color-accent);
   border-radius: 5px;
@@ -442,7 +451,7 @@ dialog {
   padding: 5px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 1000px) {
   .board {
     flex-wrap: wrap;
   }
@@ -520,4 +529,19 @@ dialog::backdrop {
     background-color 0.3s ease,
     color 0.3s ease,
     border-color 0.3s ease;
+}
+
+[data-theme="light"] .header__tag:hover {
+  background-color: #dbeafe;
+}
+
+[data-theme="dark"] .header__tag:hover {
+  background-color: #1d4ed8;
+  color: white;
+}
+
+.card:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
 }

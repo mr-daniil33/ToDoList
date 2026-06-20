@@ -1,3 +1,4 @@
 loadState();
 render();
 initEvents();
+initDragDrop();
