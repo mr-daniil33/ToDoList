@@ -1,7 +1,7 @@
+let isAddCardFormRendered = false;
 function initEvents() {
   const board = document.querySelector(".board");
   const headerFiltres = document.querySelector(".header__filtres");
-  let isAddCardFormRendered = false;
   board.addEventListener("click", (event) => {
     const addCardButton = event.target.closest(".column__add-task-btn");
     const resetAddCardForm = event.target.closest(".card__button-reset");
